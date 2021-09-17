@@ -9,6 +9,7 @@ body {
 
 ::selection {
   background-color: #87a2f3 !important;
+  color: #ffffff;
 }
 
 a {

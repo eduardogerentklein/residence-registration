@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       primary: '#5C82F6',
+      'primary-hover': '#7a9cff',
       black: {
         25: '#CACAD0',
         50: '#9697A1',

@@ -1,6 +1,7 @@
 const Input = ({
   handleChange,
   placeholder,
+  disabled = false,
   type = 'text',
   className = ''
 }) => {
@@ -11,18 +12,12 @@ const Input = ({
   return (
     <>
       <input
+        disabled={disabled}
         type={type}
         placeholder={placeholder}
-        className={`text-3xl border border-black-25 rounded rounded-md p-2 ${className}`}
+        className={`text-3xl border border-black-25 focus:outline-none focus:ring focus:border-primary-hover rounded rounded-md py-2 px-3 ${className}`}
         onChange={onChange}
       />
-      <style jsx>
-        {`
-          input:focus {
-            border: 1px solid #5c82f6;
-          }
-        `}
-      </style>
     </>
   )
 }
