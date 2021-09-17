@@ -6,7 +6,7 @@ const TextButton = ({ children, size = 4, className = '' }) => {
     1: 'text-3xl'
   }
   return (
-    <span className={`font-roboto font-bold text-1xl ${sizes[size]} ${className}`}>
+    <span className={`font-roboto font-bold ${sizes[size]} ${className}`}>
       {children}
     </span>
   )
