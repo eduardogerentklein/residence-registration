@@ -1,0 +1,6 @@
+{
+  "links": [
+    { "name": "Residence", "route": "/", "id": 1 },
+    { "name": "Heat Map", "route": "/heatmap", "id": 2 }
+  ]
+}

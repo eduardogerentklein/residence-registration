@@ -1,15 +1,13 @@
+import navigationLinks from '../../data/navigationlinks.json'
 import Navigation from '../navigation/Navigation'
 
-const links = [
-  { name: 'Residence', route: '/', id: 1 },
-  { name: 'Heat Map', route: '/map', id: 2 }
-]
 const Layout = ({ children }) => {
+  const { links } = navigationLinks
   return (
-    <div>
+    <main>
       <Navigation links={links} />
       <>{children}</>
-    </div>
+    </main>
   )
 }
 
