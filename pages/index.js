@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import Head from 'next/head'
 
+import { postAsync } from '../services/api/fetcher'
+
 import Box from '../components/container/Box'
 import Button from '../components/button/Button'
 import Input from '../components/input/Input'
@@ -16,10 +18,15 @@ const Index = () => {
   const handleSubmit = e => {
     e.preventDefault()
     setIsLoading(true)
+
+    postAsync('http://localhost:3004/residences', model).then(res => {
+      if (res.status === 201) e.target.reset()
+      setIsLoading(false)
+    })
   }
 
   const handleChange = e => {
-    setModel(Object.assign(model, { [e.name]: e.value }))
+    setModel({ ...model, [e.name]: e.value })
   }
 
   return (
