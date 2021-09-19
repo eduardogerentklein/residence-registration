@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { useForm } from 'react-hook-form'
 import Head from 'next/head'
 
 import { postAsync } from '../services/api/fetcher'
@@ -8,14 +8,20 @@ import Box from '../components/container/Box'
 import Button from '../components/button/Button'
 import Input from '../components/input/Input'
 import Loading from '../components/loading/Loading'
-import Label from '../components/typography/Label'
 import Subtitle from '../components/typography/Subtitle'
 import TextButton from '../components/typography/TextButton'
 
 const Index = () => {
-  const [model, setModel] = useState({})
+  const [model, setModel] = useState({
+    CEP: '',
+    Number: '',
+    Longitude: '',
+    Latitude: '',
+    Residents: ''
+  })
   const [isLoading, setIsLoading] = useState(false)
-  const handleSubmit = e => {
+
+  const onSubmit = e => {
     e.preventDefault()
     setIsLoading(true)
 
@@ -37,21 +43,23 @@ const Index = () => {
       {isLoading && <Loading />}
       <Box>
         <Subtitle>Residence Registration</Subtitle>
-        <form className='space-y-7' onSubmit={handleSubmit}>
-          <div className='flex flex-col space-y-1 mt-7'>
-            <Label labelFor='CEP'>CEP</Label>
+        <form className='space-y-7' onSubmit={onSubmit}>
+          <div className='space-y-1 mt-7'>
             <Input
+              label='CEP'
               type='text'
               name='CEP'
-              placeholder='Ex: 88015-420'
+              required={true}
+              placeholder='Ex: 88.015-420'
               className='text-black-75'
               onChange={handleChange}
               value={model.CEP}
             />
           </div>
-          <div className='flex flex-col space-y-1'>
-            <Label labelFor='Number'>Number</Label>
+          <div className='space-y-1'>
             <Input
+              label='Number'
+              required={true}
               type='text'
               name='Number'
               placeholder='Ex: 810'
@@ -60,9 +68,10 @@ const Index = () => {
               value={model.Number}
             />
           </div>
-          <div className='flex flex-col space-y-1'>
-            <Label labelFor='Number'>Latitude</Label>
+          <div className='space-y-1'>
             <Input
+              label='Latitude'
+              required={true}
               type='text'
               name='Latitude'
               placeholder='Ex: -48.5457307'
@@ -71,9 +80,10 @@ const Index = () => {
               value={model.Latitude}
             />
           </div>
-          <div className='flex flex-col space-y-1'>
-            <Label labelFor='Number'>Longitude</Label>
+          <div className='space-y-1'>
             <Input
+              label='Longitude'
+              required={true}
               type='text'
               name='Longitude'
               placeholder='Ex: -27.59022'
@@ -82,9 +92,10 @@ const Index = () => {
               value={model.Longitude}
             />
           </div>
-          <div className='flex flex-col space-y-1'>
-            <Label labelFor='Number'>Number of residents</Label>
+          <div className='space-y-1'>
             <Input
+              label='Number of residents'
+              required={true}
               type='text'
               name='Residents'
               placeholder='Ex: 4'
