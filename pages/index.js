@@ -20,20 +20,27 @@ const Index = () => {
     Residents: ''
   })
   const [isLoading, setIsLoading] = useState(false)
+  const { register, handleSubmit, errors } = useForm()
 
-  const onSubmit = e => {
-    e.preventDefault()
-    setIsLoading(true)
+  // const onSubmit = e => {
+  //   e.preventDefault()
+  //   setIsLoading(true)
 
-    postAsync('http://localhost:3004/residences', model).then(res => {
-      if (res.status === 201) e.target.reset()
-      setIsLoading(false)
-    })
+  //   postAsync('http://localhost:3004/residences', model).then(res => {
+  //     if (res.status === 201) e.target.reset()
+  //     setIsLoading(false)
+  //   })
+  // }
+
+  const onSubmit = formData => {
+    alert(JSON.stringify(formData))
   }
 
   const handleChange = e => {
     setModel({ ...model, [e.name]: e.value })
   }
+
+  const { ref, ...rest } = register('CEP', { required: true, maxLength: 30 })
 
   return (
     <>
@@ -43,7 +50,7 @@ const Index = () => {
       {isLoading && <Loading />}
       <Box>
         <Subtitle>Residence Registration</Subtitle>
-        <form className='space-y-7' onSubmit={onSubmit}>
+        <form className='space-y-7' onSubmit={handleSubmit(onSubmit)}>
           <div className='space-y-1 mt-7'>
             <Input
               label='CEP'
@@ -54,6 +61,8 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.CEP}
+              inputRef={el => el}
+              {...rest}
             />
           </div>
           <div className='space-y-1'>
@@ -66,6 +75,7 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Number}
+              inputRef={el => el}
             />
           </div>
           <div className='space-y-1'>
@@ -90,6 +100,7 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Longitude}
+              inputRef={el => el}
             />
           </div>
           <div className='space-y-1'>
@@ -102,6 +113,7 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Residents}
+              inputRef={el => el}
             />
           </div>
           <Button

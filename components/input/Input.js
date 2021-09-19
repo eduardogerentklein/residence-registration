@@ -6,6 +6,7 @@ const Input = ({
   name,
   disabled = false,
   value,
+  inputRef,
   type = 'text',
   className = '',
   required = false,
@@ -24,6 +25,7 @@ const Input = ({
         </Label>
       )}
       <input
+        ref={inputRef}
         value={value}
         required={required}
         name={name}
