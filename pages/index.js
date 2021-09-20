@@ -47,7 +47,11 @@ const Index = () => {
       {isLoading && <Loading />}
       <Box>
         <Subtitle>Residence Registration</Subtitle>
-        <form className='space-y-7' onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className='space-y-7'
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className='space-y-1 mt-7'>
             <Input
               label='CEP'
