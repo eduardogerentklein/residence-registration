@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
 
@@ -23,7 +23,6 @@ const Index = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm()
 
@@ -59,6 +58,7 @@ const Index = () => {
               onChange={handleChange}
               value={model.CEP}
               register={register}
+              required={true}
             />
             {errors.CEP?.type === 'required' && (
               <small className='text-red-75'>CEP is required.</small>
@@ -74,6 +74,7 @@ const Index = () => {
               onChange={handleChange}
               value={model.Number}
               register={register}
+              required={true}
             />
             {errors.Number?.type === 'required' && (
               <small className='text-red-75'>Number is required.</small>
@@ -89,6 +90,7 @@ const Index = () => {
               onChange={handleChange}
               value={model.Latitude}
               register={register}
+              required={true}
             />
             {errors.Latitude?.type === 'required' && (
               <small className='text-red-75'>Latitude is required.</small>
@@ -104,6 +106,7 @@ const Index = () => {
               onChange={handleChange}
               value={model.Longitude}
               register={register}
+              required={true}
             />
             {errors.Longitude?.type === 'required' && (
               <small className='text-red-75'>Longitude is required.</small>
@@ -119,6 +122,7 @@ const Index = () => {
               onChange={handleChange}
               value={model.Residents}
               register={register}
+              required={true}
             />
             {errors.Residents?.type === 'required' && (
               <small className='text-red-75'>Residents is required.</small>
