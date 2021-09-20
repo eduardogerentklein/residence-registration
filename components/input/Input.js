@@ -9,7 +9,8 @@ const Input = ({
   type = 'text',
   className = '',
   required = false,
-  label = ''
+  label = '',
+  register
 }) => {
   const handleChange = e => {
     if (onChange) onChange(e.target)
@@ -24,6 +25,7 @@ const Input = ({
         </Label>
       )}
       <input
+        {...register(name, { required: required })}
         value={value}
         required={required}
         name={name}
