@@ -20,29 +20,25 @@ const Index = () => {
     Residents: ''
   })
   const [isLoading, setIsLoading] = useState(false)
-  const { register, handleSubmit, watch, errors } = useForm()
-
-  // const onSubmit = e => {
-  //   e.preventDefault()
-  //   setIsLoading(true)
-
-  //   postAsync('http://localhost:3004/residences', model).then(res => {
-  //     if (res.status === 201) e.target.reset()
-  //     setIsLoading(false)
-  //   })
-  // }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm()
 
   const onSubmit = data => {
-    console.log(data)
+    setIsLoading(true)
+
+    postAsync('http://localhost:3004/residences', model).then(res => {
+      // if (res.status === 201) e.target.reset()
+      setIsLoading(false)
+    })
   }
 
   const handleChange = e => {
     setModel({ ...model, [e.name]: e.value })
   }
-
-  useEffect(() => {
-    console.log(errors)
-  }, [model])
 
   return (
     <>
@@ -56,14 +52,13 @@ const Index = () => {
           <div className='space-y-1 mt-7'>
             <Input
               label='CEP'
-              required={true}
               type='text'
               name='CEP'
               placeholder='Ex: 88.015-420'
               className='text-black-75'
               onChange={handleChange}
               value={model.CEP}
-              inputRef={register('CEP', { required: true })}
+              register={register}
             />
             {errors.CEP?.type === 'required' && (
               <small className='text-red-75'>CEP is required.</small>
@@ -72,14 +67,13 @@ const Index = () => {
           <div className='space-y-1'>
             <Input
               label='Number'
-              required={true}
               type='text'
               name='Number'
               placeholder='Ex: 810'
               className='text-black-75'
               onChange={handleChange}
               value={model.Number}
-              inputRef={register('Number', { required: true })}
+              register={register}
             />
             {errors.Number?.type === 'required' && (
               <small className='text-red-75'>Number is required.</small>
@@ -88,14 +82,13 @@ const Index = () => {
           <div className='space-y-1'>
             <Input
               label='Latitude'
-              required={true}
               type='text'
               name='Latitude'
               placeholder='Ex: -48.5457307'
               className='text-black-75'
               onChange={handleChange}
               value={model.Latitude}
-              inputRef={register('Latitude', { required: true })}
+              register={register}
             />
             {errors.Latitude?.type === 'required' && (
               <small className='text-red-75'>Latitude is required.</small>
@@ -104,14 +97,13 @@ const Index = () => {
           <div className='space-y-1'>
             <Input
               label='Longitude'
-              required={true}
               type='text'
               name='Longitude'
               placeholder='Ex: -27.59022'
               className='text-black-75'
               onChange={handleChange}
               value={model.Longitude}
-              inputRef={register('Longitude', { required: true })}
+              register={register}
             />
             {errors.Longitude?.type === 'required' && (
               <small className='text-red-75'>Longitude is required.</small>
@@ -120,14 +112,13 @@ const Index = () => {
           <div className='space-y-1'>
             <Input
               label='Number of residents'
-              required={true}
               type='text'
               name='Residents'
               placeholder='Ex: 4'
               className='text-black-75'
               onChange={handleChange}
               value={model.Residents}
-              inputRef={register('Residents', { required: true })}
+              register={register}
             />
             {errors.Residents?.type === 'required' && (
               <small className='text-red-75'>Residents is required.</small>

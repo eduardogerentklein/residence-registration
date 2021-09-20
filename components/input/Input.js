@@ -6,11 +6,11 @@ const Input = ({
   name,
   disabled = false,
   value,
-  inputRef,
   type = 'text',
   className = '',
   required = false,
-  label = ''
+  label = '',
+  register
 }) => {
   const handleChange = e => {
     if (onChange) onChange(e.target)
@@ -25,7 +25,7 @@ const Input = ({
         </Label>
       )}
       <input
-        ref={inputRef}
+        {...register(name, { required: true })}
         value={value}
         required={required}
         name={name}
