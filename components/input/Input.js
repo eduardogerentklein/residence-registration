@@ -25,7 +25,7 @@ const Input = ({
         </Label>
       )}
       <input
-        {...register(name, { required: true })}
+        {...register(name, { required: required })}
         value={value}
         required={required}
         name={name}
