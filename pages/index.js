@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
 
@@ -20,20 +20,29 @@ const Index = () => {
     Residents: ''
   })
   const [isLoading, setIsLoading] = useState(false)
+  const { register, handleSubmit, watch, errors } = useForm()
 
-  const onSubmit = e => {
-    e.preventDefault()
-    setIsLoading(true)
+  // const onSubmit = e => {
+  //   e.preventDefault()
+  //   setIsLoading(true)
 
-    postAsync('http://localhost:3004/residences', model).then(res => {
-      if (res.status === 201) e.target.reset()
-      setIsLoading(false)
-    })
+  //   postAsync('http://localhost:3004/residences', model).then(res => {
+  //     if (res.status === 201) e.target.reset()
+  //     setIsLoading(false)
+  //   })
+  // }
+
+  const onSubmit = data => {
+    console.log(data)
   }
 
   const handleChange = e => {
     setModel({ ...model, [e.name]: e.value })
   }
+
+  useEffect(() => {
+    console.log(errors)
+  }, [model])
 
   return (
     <>
@@ -43,19 +52,22 @@ const Index = () => {
       {isLoading && <Loading />}
       <Box>
         <Subtitle>Residence Registration</Subtitle>
-        <form className='space-y-7' onSubmit={onSubmit}>
+        <form className='space-y-7' onSubmit={handleSubmit(onSubmit)}>
           <div className='space-y-1 mt-7'>
             <Input
               label='CEP'
+              required={true}
               type='text'
               name='CEP'
-              required={true}
               placeholder='Ex: 88.015-420'
               className='text-black-75'
               onChange={handleChange}
               value={model.CEP}
-              inputRef={el => el}
+              inputRef={register('CEP', { required: true })}
             />
+            {errors.CEP?.type === 'required' && (
+              <small className='text-red-75'>CEP is required.</small>
+            )}
           </div>
           <div className='space-y-1'>
             <Input
@@ -67,8 +79,11 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Number}
-              inputRef={el => el}
+              inputRef={register('Number', { required: true })}
             />
+            {errors.Number?.type === 'required' && (
+              <small className='text-red-75'>Number is required.</small>
+            )}
           </div>
           <div className='space-y-1'>
             <Input
@@ -80,7 +95,11 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Latitude}
+              inputRef={register('Latitude', { required: true })}
             />
+            {errors.Latitude?.type === 'required' && (
+              <small className='text-red-75'>Latitude is required.</small>
+            )}
           </div>
           <div className='space-y-1'>
             <Input
@@ -92,8 +111,11 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Longitude}
-              inputRef={el => el}
+              inputRef={register('Longitude', { required: true })}
             />
+            {errors.Longitude?.type === 'required' && (
+              <small className='text-red-75'>Longitude is required.</small>
+            )}
           </div>
           <div className='space-y-1'>
             <Input
@@ -105,8 +127,11 @@ const Index = () => {
               className='text-black-75'
               onChange={handleChange}
               value={model.Residents}
-              inputRef={el => el}
+              inputRef={register('Residents', { required: true })}
             />
+            {errors.Residents?.type === 'required' && (
+              <small className='text-red-75'>Residents is required.</small>
+            )}
           </div>
           <Button
             type='submit'
