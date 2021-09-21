@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { postAsync } from '../services/api/fetcher'
@@ -26,12 +28,14 @@ const Index = () => {
     formState: { errors }
   } = useForm()
 
+  const router = useRouter()
+
   const onSubmit = data => {
     setIsLoading(true)
 
     postAsync('/residences', model).then(res => {
       // if (res.status === 201) e.target.reset()
-      setIsLoading(false)
+      router.push('/heatmap')
     })
   }
 
