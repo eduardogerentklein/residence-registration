@@ -36,15 +36,10 @@ const HeatMap = () => {
       <Head>
         <title>Residences - Heat Map</title>
       </Head>
-      <Box>
+      {isLoading && <Loading />}
+      <Box className='h-96'>
         <Subtitle>Heat map</Subtitle>
-        <Map
-          style='mapbox://styles/mapbox/streets-v9'
-          containerStyle={{
-            height: '50vh',
-            width: '50vw'
-          }}
-        >
+        <Map style='mapbox://styles/mapbox/streets-v9'>
           <Layer
             type='symbol'
             id='marker'
@@ -53,6 +48,18 @@ const HeatMap = () => {
             <Feature coordinates={residences} />
           </Layer>
         </Map>
+        <style global jsx>
+          {`
+            .mapboxgl-canvas {
+              height: 100% !important;
+              width: 100% !important;
+            }
+
+            .mapboxgl-map {
+              position: inherit;
+            }
+          `}
+        </style>
       </Box>
     </>
   )

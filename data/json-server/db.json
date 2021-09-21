@@ -7,6 +7,14 @@
       "Latitude": "-48.5457307",
       "Residents": "4",
       "id": 1
+    },
+    {
+      "CEP": "06233-903",
+      "Number": "820",
+      "Longitude": "174.83059",
+      "Latitude": "-36.84817",
+      "Residents": "4",
+      "id": 2
     }
   ]
 }
