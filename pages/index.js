@@ -29,7 +29,7 @@ const Index = () => {
   const onSubmit = data => {
     setIsLoading(true)
 
-    postAsync('http://localhost:3004/residences', model).then(res => {
+    postAsync('/residences', model).then(res => {
       // if (res.status === 201) e.target.reset()
       setIsLoading(false)
     })
