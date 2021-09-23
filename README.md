@@ -16,14 +16,16 @@ Json-server routes can be accessed on [http://localhost:3004/\*resources](http:/
 
 ## Residence registration page
 
-<p align="center">
+<p>
   <img alt="Residence registration page" src="./resources/demo/Residence_Registration.png" width="600" />
-  <small>Made using the collaborative interface design tool Figma</small>
+  <br />
+  <span>Made using the collaborative interface design tool Figma</span>
 </p>
 
 ## HeatMap page
 
-<p align="center">
+<p>
   <img alt="Heat Map page" src="./resources/demo/Heat_Map.png" width="600" />
-  <small>Made using the collaborative interface design tool Figma</small>
+  <br />
+  <span>Made using the collaborative interface design tool Figma</span>
 </p>
