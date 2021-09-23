@@ -13,8 +13,10 @@ const HeatMap = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [residences, setResidences] = useState([])
 
+  // It's ok to expose this token because that's a public API.
+  // Anyway, if you don't want to expose that, you can put it into an environment file.
   const Map = ReactMapboxGl({
-    accessToken: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_KEY
+    accessToken: 'pk.eyJ1IjoiZWR1YXJkb2tsZWluIiwiYSI6ImNrdHRhMzlhcDFlamcycG8xM2FlZWJlcHIifQ.N2CBio3_E_lQi0J-E0Cp_Q'
   })
 
   useEffect(() => {
