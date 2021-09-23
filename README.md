@@ -18,10 +18,12 @@ Json-server routes can be accessed on [http://localhost:3004/\*resources](http:/
 
 <p align="center">
   <img alt="Residence registration page" src="./resources/demo/Residence_Registration.png" width="600" />
+  <small>Made using the collaborative interface design tool Figma</small>
 </p>
 
 ## HeatMap page
 
 <p align="center">
   <img alt="Heat Map page" src="./resources/demo/Heat_Map.png" width="600" />
+  <small>Made using the collaborative interface design tool Figma</small>
 </p>
