@@ -17,7 +17,8 @@ const HeatMap = () => {
   // Anyway, if you don't want to expose that, you can put it into an environment file.
   // Expose environment variables to the browser by prefixing with 'NEXT_PUBLIC_'.
   const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoiZWR1YXJkb2tsZWluIiwiYSI6ImNrdHRhMzlhcDFlamcycG8xM2FlZWJlcHIifQ.N2CBio3_E_lQi0J-E0Cp_Q'
+    accessToken:
+      'pk.eyJ1IjoiZWR1YXJkb2tsZWluIiwiYSI6ImNrdHRhMzlhcDFlamcycG8xM2FlZWJlcHIifQ.N2CBio3_E_lQi0J-E0Cp_Q'
   })
 
   useEffect(() => {
@@ -87,7 +88,6 @@ const HeatMap = () => {
       </Head>
       {isLoading && <Loading />}
       <Box className='mapbox-box-height'>
-        <Subtitle>Heat map</Subtitle>
         <Map
           style='mapbox://styles/mapbox/dark-v9'
           center={center}
