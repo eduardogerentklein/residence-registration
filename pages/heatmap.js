@@ -15,6 +15,7 @@ const HeatMap = () => {
 
   // It's ok to expose this token because that's a public API.
   // Anyway, if you don't want to expose that, you can put it into an environment file.
+  // Expose environment variables to the browser by prefixing with 'NEXT_PUBLIC_'.
   const Map = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiZWR1YXJkb2tsZWluIiwiYSI6ImNrdHRhMzlhcDFlamcycG8xM2FlZWJlcHIifQ.N2CBio3_E_lQi0J-E0Cp_Q'
   })
